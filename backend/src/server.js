@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const { initializeDatabase } = require('./config/database');
 const assignmentsRouter = require('./routes/assignments');
+const studentsRouter = require('./routes/students');
 
 // Load environment variables
 dotenv.config();
@@ -16,6 +17,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/assignments', assignmentsRouter);
+app.use('/api/students', studentsRouter);
 
 // Basic test route
 app.get('/', (req, res) => {

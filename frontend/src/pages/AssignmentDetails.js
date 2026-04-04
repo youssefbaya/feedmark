@@ -119,7 +119,7 @@ function AssignmentDetails() {
       </div>
 
       <div className="details-actions">
-        <button className="btn-mark">Mark Students</button>
+        <button className="btn-mark" onClick={() => navigate(`/mark/${assignment.id}`)}>Mark Students</button>
         <button className="btn-export">Export to CSV</button>
         <button className="btn-edit">Edit Assignment</button>
       </div>

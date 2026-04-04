@@ -9,6 +9,7 @@ import Assignments from './pages/Assignments';
 import AssignmentDetails from './pages/AssignmentDetails';
 import CreateAssignment from './pages/CreateAssignment';
 import FeedbackLibrary from './pages/FeedbackLibrary';
+import MarkStudent from './pages/MarkStudent';
 
 import './App.css';
 
@@ -20,6 +21,7 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Dashboard />} />
         <Route path="/assignments" element={<Assignments />} />
+        <Route path="/mark/:id" element={<MarkStudent />} />
         <Route path="/assignments/:id" element={<AssignmentDetails />} />
         <Route path="/create" element={<CreateAssignment />} />
         <Route path="/feedback" element={<FeedbackLibrary />} />
