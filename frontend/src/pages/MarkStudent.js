@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAssignments } from '../context/AssignmentContext';
+import { useFeedback } from '../context/FeedbackContext';
 import PageTransition from '../components/PageTransition';
 import './MarkStudent.css';
 
@@ -8,6 +9,7 @@ function MarkStudent() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { getAssignment } = useAssignments();
+  const { feedbackComments } = useFeedback();
   
   const assignment = getAssignment(parseInt(id));
   
@@ -15,21 +17,26 @@ function MarkStudent() {
   const [studentId, setStudentId] = useState('');
   const [marks, setMarks] = useState({});
   const [feedback, setFeedback] = useState({});
+  const [showFeedbackLibrary, setShowFeedbackLibrary] = useState({});
+  const [selectedCategory, setSelectedCategory] = useState('all');
   
   useEffect(() => {
     if (assignment) {
       const initialMarks = {};
       const initialFeedback = {};
+      const initialShowLibrary = {};
       
       assignment.sections.forEach(section => {
         section.criteria.forEach(criterion => {
           initialMarks[criterion.id] = '';
           initialFeedback[criterion.id] = '';
+          initialShowLibrary[criterion.id] = false;
         });
       });
       
       setMarks(initialMarks);
       setFeedback(initialFeedback);
+      setShowFeedbackLibrary(initialShowLibrary);
     }
   }, [assignment]);
   
@@ -50,6 +57,25 @@ function MarkStudent() {
   const handleFeedbackChange = (criterionId, value) => {
     setFeedback({ ...feedback, [criterionId]: value });
   };
+  
+  const toggleFeedbackLibrary = (criterionId) => {
+    setShowFeedbackLibrary({ 
+      ...showFeedbackLibrary, 
+      [criterionId]: !showFeedbackLibrary[criterionId] 
+    });
+  };
+  
+  const insertFeedback = (criterionId, feedbackText) => {
+    const currentFeedback = feedback[criterionId] || '';
+    const newFeedback = currentFeedback 
+      ? `${currentFeedback}\n${feedbackText}` 
+      : feedbackText;
+    setFeedback({ ...feedback, [criterionId]: newFeedback });
+  };
+  
+  const filteredFeedback = selectedCategory === 'all' 
+    ? feedbackComments 
+    : feedbackComments.filter(f => f.category === selectedCategory);
   
   const calculateTotal = () => {
     return Object.values(marks).reduce((sum, mark) => {
@@ -82,7 +108,7 @@ function MarkStudent() {
       
       if (response.ok) {
         alert('Marking saved successfully!');
-        navigate(`/assignments/${assignment.id}`);
+        navigate(`/marked/${assignment.id}`);
       }
     } catch (error) {
       console.error('Error saving marks:', error);
@@ -157,12 +183,60 @@ function MarkStudent() {
                       </div>
                       
                       <div className="feedback-input-group">
-                        <label>Feedback</label>
+                        <div className="feedback-header">
+                          <label>Feedback</label>
+                          <button 
+                            type="button"
+                            className="btn-feedback-library"
+                            onClick={() => toggleFeedbackLibrary(criterion.id)}
+                          >
+                            {showFeedbackLibrary[criterion.id] ? 'Hide' : 'Show'} Library
+                          </button>
+                        </div>
+                        
+                        {showFeedbackLibrary[criterion.id] && (
+                          <div className="feedback-library-panel">
+                            <div className="library-controls">
+                              <select 
+                                value={selectedCategory} 
+                                onChange={(e) => setSelectedCategory(e.target.value)}
+                                className="category-filter"
+                              >
+                                <option value="all">All Categories</option>
+                                <option value="general">General</option>
+                                <option value="positive">Positive</option>
+                                <option value="improvement">Needs Improvement</option>
+                                <option value="critical">Critical Issue</option>
+                                <option value="excellent">Excellent Work</option>
+                              </select>
+                            </div>
+                            
+                            <div className="feedback-items">
+                              {filteredFeedback.length === 0 ? (
+                                <p className="no-feedback">No feedback comments in this category</p>
+                              ) : (
+                                filteredFeedback.map(fb => (
+                                  <div 
+                                    key={fb.id} 
+                                    className="feedback-item"
+                                    onClick={() => insertFeedback(criterion.id, fb.text)}
+                                  >
+                                    <span className={`feedback-badge ${fb.category}`}>
+                                      {fb.category}
+                                    </span>
+                                    <p>{fb.text}</p>
+                                  </div>
+                                ))
+                              )}
+                            </div>
+                          </div>
+                        )}
+                        
                         <textarea
                           value={feedback[criterion.id] || ''}
                           onChange={(e) => handleFeedbackChange(criterion.id, e.target.value)}
                           placeholder="Optional feedback for this criterion..."
-                          rows="2"
+                          rows="3"
                         />
                       </div>
                     </div>

@@ -1,22 +1,71 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 
 const FeedbackContext = createContext();
 
 export function FeedbackProvider({ children }) {
   const [feedbackComments, setFeedbackComments] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const addFeedback = (feedback) => {
-    setFeedbackComments([...feedbackComments, feedback]);
+  useEffect(() => {
+    fetchFeedback();
+  }, []);
+
+  const fetchFeedback = async () => {
+    try {
+      const response = await fetch('http://localhost:5001/api/feedback');
+      const data = await response.json();
+      setFeedbackComments(data);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching feedback:', error);
+      setLoading(false);
+    }
   };
 
-  const deleteFeedback = (id) => {
-    setFeedbackComments(feedbackComments.filter(f => f.id !== id));
+  const addFeedback = async (feedback) => {
+    try {
+      const response = await fetch('http://localhost:5001/api/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(feedback)
+      });
+      
+      if (response.ok) {
+        fetchFeedback();
+      }
+    } catch (error) {
+      console.error('Error adding feedback:', error);
+    }
   };
 
-  const updateFeedback = (id, updatedFeedback) => {
-    setFeedbackComments(feedbackComments.map(f => 
-      f.id === id ? { ...f, ...updatedFeedback } : f
-    ));
+  const deleteFeedback = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:5001/api/feedback/${id}`, {
+        method: 'DELETE'
+      });
+      
+      if (response.ok) {
+        fetchFeedback();
+      }
+    } catch (error) {
+      console.error('Error deleting feedback:', error);
+    }
+  };
+
+  const updateFeedback = async (id, updatedFeedback) => {
+    try {
+      const response = await fetch(`http://localhost:5001/api/feedback/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedFeedback)
+      });
+      
+      if (response.ok) {
+        fetchFeedback();
+      }
+    } catch (error) {
+      console.error('Error updating feedback:', error);
+    }
   };
 
   return (
@@ -24,7 +73,8 @@ export function FeedbackProvider({ children }) {
       feedbackComments, 
       addFeedback, 
       deleteFeedback, 
-      updateFeedback 
+      updateFeedback,
+      loading
     }}>
       {children}
     </FeedbackContext.Provider>

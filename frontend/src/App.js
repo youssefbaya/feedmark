@@ -10,6 +10,7 @@ import AssignmentDetails from './pages/AssignmentDetails';
 import CreateAssignment from './pages/CreateAssignment';
 import FeedbackLibrary from './pages/FeedbackLibrary';
 import MarkStudent from './pages/MarkStudent';
+import MarkedStudents from './pages/MarkedStudents';
 
 import './App.css';
 
@@ -25,6 +26,7 @@ function AnimatedRoutes() {
         <Route path="/assignments/:id" element={<AssignmentDetails />} />
         <Route path="/create" element={<CreateAssignment />} />
         <Route path="/feedback" element={<FeedbackLibrary />} />
+        <Route path="/marked/:id" element={<MarkedStudents />} />
       </Routes>
     </AnimatePresence>
   );

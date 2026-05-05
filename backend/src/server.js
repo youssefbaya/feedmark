@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const { initializeDatabase } = require('./config/database');
 const assignmentsRouter = require('./routes/assignments');
 const studentsRouter = require('./routes/students');
+const feedbackRouter = require('./routes/feedback');
 
 // Load environment variables
 dotenv.config();
@@ -18,6 +19,7 @@ app.use(express.json());
 // Routes
 app.use('/api/assignments', assignmentsRouter);
 app.use('/api/students', studentsRouter);
+app.use('/api/feedback', feedbackRouter);
 
 // Basic test route
 app.get('/', (req, res) => {

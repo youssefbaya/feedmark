@@ -210,3 +210,19 @@
   font-style: italic;
   padding: 2rem;
 }
+
+.btn-view-marked {
+  background: #3498db;
+  color: white;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.btn-view-marked:hover {
+  background: #2980b9;
+}

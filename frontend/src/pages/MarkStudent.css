@@ -200,3 +200,116 @@
 .btn-submit-marks:hover {
   background: #229954;
 }
+
+.feedback-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.btn-feedback-library {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.btn-feedback-library:hover {
+  background: #2980b9;
+}
+
+.feedback-library-panel {
+  background: #f8f9fa;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.library-controls {
+  margin-bottom: 1rem;
+}
+
+.category-filter {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.feedback-items {
+  max-height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.feedback-item {
+  background: white;
+  padding: 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.feedback-item:hover {
+  border-color: #3498db;
+  transform: translateX(4px);
+}
+
+.feedback-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-transform: capitalize;
+}
+
+.feedback-badge.general {
+  background: #95a5a6;
+  color: white;
+}
+
+.feedback-badge.positive {
+  background: #EFB11D;
+  color: white;
+}
+
+.feedback-badge.improvement {
+  background: #D6536D;
+  color: white;
+}
+
+.feedback-badge.critical {
+  background: #E43D12;
+  color: white;
+}
+
+.feedback-badge.excellent {
+  background: #27ae60;
+  color: white;
+}
+
+.feedback-item p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #2c3e50;
+}
+
+.no-feedback {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  padding: 1rem;
+  margin: 0;
+}

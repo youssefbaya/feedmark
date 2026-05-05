@@ -1,0 +1,137 @@
+.marked-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.marked-header h1 {
+  margin: 0;
+}
+
+.assignment-info {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.assignment-info h2 {
+  margin: 0 0 0.5rem 0;
+}
+
+.assignment-info p {
+  margin: 0;
+  color: #666;
+}
+
+.students-table {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.students-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.students-table thead {
+  background: #f8f9fa;
+}
+
+.students-table th {
+  text-align: left;
+  padding: 1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.students-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.students-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.marks-cell {
+  font-weight: 600;
+  color: #E43D12;
+  font-size: 1.1rem;
+}
+
+.actions-cell {
+  text-align: right;
+}
+
+.btn-delete-small {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-delete-small:hover {
+  background: #c0392b;
+}
+
+.marked-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.btn-mark-another {
+  background: #27ae60;
+  color: white;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.btn-mark-another:hover {
+  background: #229954;
+}
+
+.btn-export {
+  background: #EFB11D;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-export:hover {
+  background: #d99d0f;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: #999;
+}
+
+.btn-primary {
+  background: #E43D12;
+  color: white;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: #c63410;
+}

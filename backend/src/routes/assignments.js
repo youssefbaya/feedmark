@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { db } = require('../config/database');
+const { generateCanvasCSV } = require('../utils/exportCSV');
 
 
 const toCamelCase = (obj) => {
@@ -115,6 +116,18 @@ router.delete('/:id', (req, res) => {
     }
     
     res.json({ message: 'Assignment deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.get('/:id/export', (req, res) => {
+  try {
+    const csv = generateCanvasCSV(req.params.id);
+    
+    res.setHeader('Content-Type', 'text/csv');
+    res.setHeader('Content-Disposition', `attachment; filename=assignment-${req.params.id}-marks.csv`);
+    res.send(csv);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
