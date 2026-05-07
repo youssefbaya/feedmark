@@ -1,17 +1,19 @@
 import { useState } from 'react';
 import { useFeedback } from '../context/FeedbackContext';
+import toast from 'react-hot-toast';
 import './FeedbackForm.css';
+
 
 function FeedbackForm({ editingFeedback, onCancel }) {
   const { addFeedback, updateFeedback } = useFeedback();
-  
+
   const [text, setText] = useState(editingFeedback?.text || '');
   const [category, setCategory] = useState(editingFeedback?.category || 'general');
   const [tags, setTags] = useState(editingFeedback?.tags || '');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     const feedback = {
       id: editingFeedback?.id || Date.now(),
       text,
@@ -23,14 +25,16 @@ function FeedbackForm({ editingFeedback, onCancel }) {
 
     if (editingFeedback) {
       updateFeedback(editingFeedback.id, feedback);
+      toast.success('Feedback updated successfully');
     } else {
       addFeedback(feedback);
+      toast.success('Feedback added successfully');
     }
 
     setText('');
     setCategory('general');
     setTags('');
-    
+
     if (onCancel) onCancel();
   };
 

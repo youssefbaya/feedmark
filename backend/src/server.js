@@ -5,6 +5,7 @@ const { initializeDatabase } = require('./config/database');
 const assignmentsRouter = require('./routes/assignments');
 const studentsRouter = require('./routes/students');
 const feedbackRouter = require('./routes/feedback');
+const path = require('path');
 
 // Load environment variables
 dotenv.config();
@@ -15,6 +16,7 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // Routes
 app.use('/api/assignments', assignmentsRouter);

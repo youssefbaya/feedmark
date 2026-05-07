@@ -1,8 +1,9 @@
 .feedback-form {
   background: white;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 1.75rem;
+  border-radius: 20px;
+  border: 1px solid #ececec;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.04);
   margin-bottom: 2rem;
 }
 
@@ -21,11 +22,20 @@
 .form-group textarea,
 .form-group select {
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 0.9rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
   font-size: 1rem;
   font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #E43D12;
+  box-shadow: 0 0 0 4px rgba(228,61,18,0.08);
 }
 
 .form-group textarea {

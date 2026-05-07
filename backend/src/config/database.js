@@ -48,6 +48,8 @@ const initializeDatabase = () => {
       assignment_id INTEGER NOT NULL,
       student_name TEXT NOT NULL,
       student_id TEXT,
+      submission_file_name TEXT,
+      submission_file_path TEXT,
       total_marks REAL NOT NULL,
       created_at TEXT NOT NULL,
       FOREIGN KEY (assignment_id) REFERENCES assignments(id) ON DELETE CASCADE
@@ -63,6 +65,14 @@ const initializeDatabase = () => {
       FOREIGN KEY (criterion_id) REFERENCES criteria(id) ON DELETE CASCADE
     );
   `);
+
+  try {
+    db.prepare('ALTER TABLE students ADD COLUMN submission_file_name TEXT').run();
+  } catch (error) { }
+
+  try {
+    db.prepare('ALTER TABLE students ADD COLUMN submission_file_path TEXT').run();
+  } catch (error) { }
 
   console.log('Database tables initialized');
 };

@@ -88,24 +88,32 @@
 }
 
 .marking-section {
-  background: #f8f9fa;
-  padding: 1.5rem;
-  border-radius: 12px;
+  background: white;
+  padding: 1.75rem;
+  border-radius: 24px;
   margin-bottom: 1.5rem;
+  border: 1px solid #ececec;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.04);
 }
 
 .marking-section h3 {
   margin-top: 0;
-  color: #2c3e50;
-  border-bottom: 2px solid #e0e0e0;
-  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+  color: #1f2937;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ececec;
 }
 
 .criterion-marking {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
+  background: #fcfcfc;
+  padding: 1.4rem;
+  border-radius: 18px;
   margin-bottom: 1rem;
+  border: 1px solid #ececec;
+  transition: all 0.2s ease;
 }
 
 .criterion-header {
@@ -122,8 +130,9 @@
 
 .criterion-name {
   flex: 1;
-  font-weight: 600;
-  color: #2c3e50;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #1f2937;
 }
 
 .criterion-max {
@@ -149,22 +158,39 @@
 
 .marks-input {
   width: 100%;
-  padding: 0.75rem;
-  border: 2px solid #2c3e50;  
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
+  padding: 1rem;
+  border: 2px solid #dfe3e6;
+  border-radius: 16px;
+  font-size: 1.3rem;
+  font-weight: 800;
   text-align: center;
-  color: #2c3e50;  
+  color: #1f2937;
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.marks-input:focus {
+  outline: none;
+  border-color: #E43D12;
+  box-shadow: 0 0 0 4px rgba(228, 61, 18, 0.12);
 }
 
 .feedback-input-group textarea {
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid #e3e7ea;
+  border-radius: 16px;
   font-family: inherit;
   resize: vertical;
+  min-height: 120px;
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.feedback-input-group textarea:focus {
+  outline: none;
+  border-color: #E43D12;
+  box-shadow: 0 0 0 4px rgba(228, 61, 18, 0.08);
 }
 
 .marking-summary {
@@ -172,33 +198,53 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 2rem;
-  border-top: 2px solid #e0e0e0;
+  margin-top: 1rem;
+  border-top: 2px solid #e7e7e7;
 }
 
 .total-marks {
-  font-size: 1.5rem;
-  color: #ffffff;
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  background: #f8f9fa;
+  border: 1px solid #ececec;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+}
+
+.total-marks span {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #666;
 }
 
 .total-marks strong {
-  color: #ffffff;
-  margin-left: 1rem;
-  font-size: 2rem;
+  color: #E43D12;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.total-marks small {
+  color: #777;
+  font-size: 1rem;
 }
 
 .btn-submit-marks {
-  background: #27ae60;
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
   color: white;
   border: none;
   padding: 1rem 2.5rem;
-  border-radius: 8px;
+  border-radius: 14px;
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 8px 20px rgba(39, 174, 96, 0.2);
 }
 
 .btn-submit-marks:hover {
-  background: #229954;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(39, 174, 96, 0.3);
 }
 
 .feedback-header {
@@ -209,7 +255,7 @@
 }
 
 .btn-feedback-library {
-  background: #3498db;
+  background: #1f2937;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -220,12 +266,12 @@
 }
 
 .btn-feedback-library:hover {
-  background: #2980b9;
+  background: #111827;
 }
 
 .feedback-library-panel {
-  background: #f8f9fa;
-  border: 2px solid #e0e0e0;
+  background: #f8fafb;
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 0.75rem;
@@ -261,7 +307,8 @@
 }
 
 .feedback-item:hover {
-  border-color: #3498db;
+  border-color: rgba(228, 61, 18, 0.2);
+  background: #fff7f4;
   transform: translateX(4px);
 }
 
@@ -312,4 +359,291 @@
   font-style: italic;
   padding: 1rem;
   margin: 0;
+}
+
+.mark-progress-box {
+  min-width: 240px;
+}
+
+.mark-progress-box span {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.mark-progress-bar {
+  height: 10px;
+  background: #e5e5e5;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.mark-progress-bar div {
+  height: 100%;
+  background: linear-gradient(90deg, #E43D12, #D6536D);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.assignment-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.criterion-marking {
+  border: 1px solid #ececec;
+  transition: all 0.2s ease;
+}
+
+.criterion-marking:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+}
+
+.marks-input {
+  background: #fafafa;
+}
+
+.total-marks small {
+  display: block;
+  margin-top: 0.3rem;
+  color: #777;
+  font-size: 0.95rem;
+}
+
+.btn-edit-small {
+  background: #f3f4f6;
+  color: #1f2937;
+  text-decoration: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.btn-edit-small:hover {
+  background: #e5e7eb;
+}
+
+.grade-band-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.7rem;
+  margin-bottom: 1.25rem;
+}
+
+.grade-band-card {
+  min-height: 118px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  border-radius: 14px;
+  padding: 0.85rem;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.grade-band-card strong {
+  display: block;
+  color: #1f2937;
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin-bottom: 0.45rem;
+}
+
+.grade-band-card span {
+  display: block;
+  color: #6b7280;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+.grade-band-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(228, 61, 18, 0.35);
+  background: #fff7f4;
+}
+
+.grade-band-card.selected {
+  border: 2px solid #E43D12;
+  background: #fff7f4;
+  box-shadow: 0 8px 20px rgba(228, 61, 18, 0.12);
+}
+
+.grade-band-card.selected strong {
+  color: #E43D12;
+}
+
+.selected-band-label {
+  background: rgba(228, 61, 18, 0.1);
+  color: #E43D12;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.criterion-marking.completed {
+  border-left: 6px solid #27ae60;
+  background: linear-gradient(180deg,
+      rgba(39, 174, 96, 0.03),
+      #ffffff);
+}
+
+.criterion-marking.completed .criterion-number {
+  color: #27ae60;
+  font-weight: 800;
+}
+
+.feedback-search {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 0.7rem;
+  font-size: 0.9rem;
+}
+
+.feedback-search:focus {
+  outline: none;
+  border-color: #E43D12;
+  box-shadow: 0 0 0 3px rgba(228, 61, 18, 0.08);
+}
+
+.sticky-summary-wrapper {
+  position: sticky;
+  bottom: 1.5rem;
+  z-index: 50;
+  margin-top: 2rem;
+}
+
+.marking-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 1.25rem;
+  margin-top: 1rem;
+  border-top: 1px solid #e7e7e7;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(228, 61, 18, 0.12);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.total-marks {
+  width: fit-content;
+  min-width: 360px;
+  flex: 0 0 auto;
+}
+
+.btn-submit-marks {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 260px;
+  height: auto;
+  align-self: center;
+}
+
+.students-table {
+  border: 1px solid #ececec;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.04);
+  border-radius: 18px;
+}
+
+.students-table th {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6b7280;
+  font-weight: 800;
+}
+
+.students-table td {
+  vertical-align: middle;
+}
+
+.students-table tbody tr {
+  transition: all 0.2s ease;
+}
+
+.students-table tbody tr:hover {
+  background: #fff7f4;
+}
+
+.marks-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.grade-badge {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.grade-badge.first {
+  background: rgba(39,174,96,0.12);
+  color: #27ae60;
+}
+
+.grade-badge.twoone {
+  background: rgba(52,152,219,0.12);
+  color: #3498db;
+}
+
+.grade-badge.twotwo {
+  background: rgba(239,177,29,0.14);
+  color: #c28b00;
+}
+
+.grade-badge.third {
+  background: rgba(230,126,34,0.14);
+  color: #e67e22;
+}
+
+.grade-badge.pass {
+  background: rgba(127,140,141,0.15);
+  color: #7f8c8d;
+}
+
+.grade-badge.fail {
+  background: rgba(214,83,109,0.14);
+  color: #D6536D;
+}
+
+.submission-link {
+  color: #E43D12;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.submission-link:hover {
+  text-decoration: underline;
+}
+
+.actions-cell {
+  white-space: nowrap;
+}
+
+.btn-edit-small,
+.btn-delete-small {
+  transition: all 0.2s ease;
+}
+
+.btn-edit-small:hover,
+.btn-delete-small:hover {
+  transform: translateY(-2px);
 }

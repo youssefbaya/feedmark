@@ -1,6 +1,7 @@
 import { createContext, useState, useContext } from 'react';
 import { useEffect } from 'react';
 
+
 const AssignmentContext = createContext();
 
 export function AssignmentProvider({ children }) {
@@ -24,6 +25,7 @@ export function AssignmentProvider({ children }) {
     }
   };
 
+
   const addAssignment = async (assignment) => {
     try {
       const response = await fetch('http://localhost:5001/api/assignments', {
@@ -31,7 +33,7 @@ export function AssignmentProvider({ children }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(assignment)
       });
-      
+
       if (response.ok) {
         fetchAssignments();
       }
@@ -40,12 +42,34 @@ export function AssignmentProvider({ children }) {
     }
   };
 
+  const updateAssignment = async (id, assignment) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5001/api/assignments/${id}`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(assignment)
+        }
+      );
+
+      if (response.ok) {
+        fetchAssignments();
+      }
+
+    } catch (error) {
+      console.error('Error updating assignment:', error);
+    }
+  };
+
   const deleteAssignment = async (id) => {
     try {
       const response = await fetch(`http://localhost:5001/api/assignments/${id}`, {
         method: 'DELETE'
       });
-      
+
       if (response.ok) {
         fetchAssignments();
       }
@@ -59,9 +83,10 @@ export function AssignmentProvider({ children }) {
   };
 
   return (
-    <AssignmentContext.Provider value={{ 
-      assignments, 
-      addAssignment, 
+    <AssignmentContext.Provider value={{
+      assignments,
+      addAssignment,
+      updateAssignment,
       deleteAssignment,
       getAssignment,
       loading

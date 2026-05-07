@@ -36,21 +36,25 @@
 
 .assignments-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  gap: 1.25rem;
 }
 
 .assignment-card {
   background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 24px;
+  padding: 1.6rem;
+  border: 1px solid #ececec;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.05);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .assignment-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 16px rgba(228, 61, 18, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(228, 61, 18, 0.12);
+  border-color: rgba(228, 61, 18, 0.25);
 }
 
 .card-header {
@@ -62,17 +66,29 @@
 
 .card-header h3 {
   margin: 0;
-  color: #2c3e50;
   flex: 1;
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #1f2937;
+}
+
+
+
+.assignment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(228, 61, 18, 0.12);
+  border-color: rgba(228, 61, 18, 0.25);
 }
 
 .total-marks {
-  background: #E43D12;
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
+  background: rgba(228, 61, 18, 0.08);
+  color: #E43D12;
+  border: 1px solid rgba(228, 61, 18, 0.15);
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .card-description {
@@ -83,35 +99,42 @@
 
 .card-stats {
   display: flex;
-  gap: 2rem;
-  margin-bottom: 1rem;
-  padding: 1rem 0;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+  gap: 1rem;
+  margin: 1.25rem 0;
 }
 
 .stat {
+  background: #f8fafb;
+  border-radius: 16px;
+  padding: 0.9rem 1rem;
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
 
 .stat-label {
-  font-size: 0.85rem;
-  color: #999;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #7b8794;
 }
 
 .stat-value {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #2c3e50;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #1f2937;
 }
 
 .card-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f0f0f0;
 }
 
 .created-date {
@@ -125,31 +148,33 @@
 }
 
 .btn-view {
-  background: #95a5a6;
-  color: white;
+  background: #f3f4f6;
+  color: #1f2937;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+  padding: 0.7rem 1rem;
+  border-radius: 12px;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 700;
+  transition: all 0.2s ease;
 }
 
 .btn-view:hover {
-  background: #7f8c8d;
+  background: #e5e7eb;
 }
 
 .btn-delete {
-  background: #e74c3c;
-  color: white;
+  background: rgba(214, 83, 109, 0.12);
+  color: #D6536D;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+  padding: 0.7rem 1rem;
+  border-radius: 12px;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 700;
+  transition: all 0.2s ease;
 }
 
 .btn-delete:hover {
-  background: #c0392b;
+  background: rgba(214, 83, 109, 0.2);
 }
 
 .btn-primary {
